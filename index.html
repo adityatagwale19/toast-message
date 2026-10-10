@@ -3,47 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toast Notification</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Toast Notifications | Success, Error, Info, Warning</title>
+    <meta name="description" content="Stacking toast notifications with icons, a close button and a progress bar that pauses on hover.">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
 </head>
 <body>
-    <div class="buttons">
-        <button onclick="showtoast(successMsg)">Success</button>
-        <button onclick="showtoast(errorMsg)">Error</button>
-        <button onclick="showtoast(invalidMsg)">Invalid</button>
-    </div>
+    <main class="container">
+        <section class="card" aria-labelledby="pageTitle">
+            <h1 id="pageTitle">Toast notifications</h1>
+            <p class="intro">Pick a type to show a toast. Each one closes after 5 seconds, and hovering over it pauses the timer.</p>
 
-    <div id="toastBox"></div>
+            <div class="buttons">
+                <button class="trigger trigger-success" type="button" data-type="success">
+                    <i class="fa-solid fa-circle-check" aria-hidden="true"></i> Success
+                </button>
+                <button class="trigger trigger-error" type="button" data-type="error">
+                    <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i> Error
+                </button>
+                <button class="trigger trigger-info" type="button" data-type="info">
+                    <i class="fa-solid fa-circle-info" aria-hidden="true"></i> Info
+                </button>
+                <button class="trigger trigger-warning" type="button" data-type="warning">
+                    <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Warning
+                </button>
+            </div>
 
+            <button class="clear-button" id="clearBtn" type="button">Clear all</button>
+        </section>
+    </main>
 
-
-    <script>
-
-        let toastBox = document.getElementById('toastBox');
-        let successMsg = '<i class="fa-solid fa-circle-check"></i>  Successfully submitted';  // declare the msg
-        let errorMsg = '<i class="fa-solid fa-circle-xmark"></i>  Please fix the error!';
-        let invalidMsg = '<i class="fa-solid fa-triangle-exclamation"></i>  Invalid input, check again';
-
-
-        function showtoast(Msg){
-            let toast = document.createElement("div");
-            toast.classList.add('toast');
-            toast.innerHTML = Msg;  // to pass the particular msg to the user
-            toastBox.appendChild(toast);
-
-            if(Msg.includes('error')){
-                toast.classList.add('error');
-            }
-
-            if(Msg.includes('Invalid')){
-                toast.classList.add('invalid');
-            }
-
-            setTimeout(function(){
-                toast.remove();
-            },3500)
-        }
-    </script>
+    <div class="toast-box" id="toastBox" role="region" aria-label="Notifications" aria-live="polite" aria-relevant="additions"></div>
 </body>
 </html>

@@ -2,7 +2,7 @@
 
 Toast notifications I built with HTML, CSS and JavaScript while learning animations.
 
-Buttons show success, error and invalid messages that slide in and disappear by themselves.
+Four buttons show success, error, info and warning toasts. They stack in the corner, close by themselves after five seconds, pause the timer while you hover them, and have their own close button.
 
 ![Toast Message](docs/screenshots/preview.png)
 
